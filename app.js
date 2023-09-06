@@ -99,7 +99,7 @@ function createCard() {
 		newLi.innerHTML = `
 		<div class="container">
       <input type="checkbox" id="product" name="chk" class="basket-card__checkbox">
-      <img src="/img/${value.img}" class="basket-card__img" />
+      <img src="img/${value.img}" class="basket-card__img" />
       <div class="basket-card__product">
 	  <div class="basket-card__price_isMobile">
       <div class="basket-card__price-real_isMobile">${
@@ -132,8 +132,8 @@ function createCard() {
         Осталось ${value.lasts} шт.
 	  </div>
       <div class="basket-card__icons">
-      <span><img src="/img/heart.svg" /></span> 
-      <span><img src="/img/delete.svg" /></span>
+      <span><img src="img/heart.svg" /></span> 
+      <span><img src="img/delete.svg" /></span>
       </div>
       </div>
       <div class="basket-card__price">
@@ -173,7 +173,7 @@ function createLacklist() {
 		newLi.className = 'lack-list';
 		newLi.innerHTML = `
 	<div class="container">	
-    <img src="/img/${value.img}" class="lack-list__img"/>
+    <img src="img/${value.img}" class="lack-list__img"/>
     <div class="lack-list__product">
     <div class="lack-list__name">${value.name}</div>
     <div class="lack-list__options">${value.options}</div>
@@ -181,8 +181,8 @@ function createLacklist() {
 	</div>
 	<div class="container">	
     <div class="lack-list__icons">
-    <span><img src="/img/heart.svg" /></span> 
-    <span><img src="/img/delete.svg" /></span>
+    <span><img src="img/heart.svg" /></span> 
+    <span><img src="img/delete.svg" /></span>
     </div>
 	</div>
     `;
