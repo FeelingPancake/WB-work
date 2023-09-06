@@ -150,7 +150,7 @@
 						</div>
 					</div>
 					<div class="delivery__info">
-						<span class="delivery__info-icon"></span>
+						<img src="img/price-ship.svg" alt="ship-img" />
 						Обратная доставка товаров на склад при отказе —
 						<span class="delivery__info-price">Бесплатно</span>
 					</div>
@@ -248,7 +248,7 @@
 					</div>
 				</div>
 				<div class="summary__delivery-info">
-					<span class="delivery__info-icon"></span>
+					<img src="img/price-ship.svg" alt="ship-img" />
 					Обратная доставка товаров на склад при отказе — Бесплатно
 				</div>
 				<div>
@@ -258,7 +258,7 @@
 							><img src="img/edit.svg" alt="edit"
 						/></a>
 					</div>
-					<div class="payment__info">
+					<div class="payment__info isDesktop">
 						<img
 							class="payment-icon"
 							src="img/Платежные системы.png"
@@ -273,7 +273,7 @@
 					</div>
 				</div>
 				<div class="last-step">
-					<button class="order-btn">Заказать</button>
+					<button type="submit" class="order-btn">Заказать</button>
 					<p class="last-step__info">
 						<span class="last-step__icon"></span>
 						Соглашаюсь с правилами пользования торговой площадкой и возврата
@@ -282,7 +282,28 @@
 			</section>
 			<!--SUMMARY END-->
 		</main>
-		<footer class="footer"><p>© 2022 ООО «Товары и точка»</p></footer>
+		<footer class="footer">
+			<p>© 2022 ООО «Товары и точка»</p>
+		</footer>
+		<nav class="mobile-navbar isMobile">
+			<ul class="mobile-navbar__list">
+				<li class="mobile-navbar__item">
+					<a><img src="img/main.svg" class="nav-icon" /></a>
+				</li>
+				<li class="mobile-navbar__item">
+					<a><img src="img/catalog.svg" class="nav-icon" /></a>
+				</li>
+				<li class="mobile-navbar__item">
+					<a><img src="img/cart-nav.svg" class="nav-icon" /></a>
+				</li>
+				<li class="mobile-navbar__item">
+					<a><img src="img/favorites.svg" class="nav-icon" /></a>
+				</li>
+				<li class="mobile-navbar__item">
+					<a><img src="img/profile_nav.svg" class="nav-icon" /></a>
+				</li>
+			</ul>
+		</nav>
 		<script src="app.js"></script>
 	</body>
 </html>
