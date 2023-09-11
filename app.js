@@ -5,6 +5,7 @@ let divDelivery = document.querySelector('.delivery__data-address');
 let missing = document.querySelector('.basket__heading-lack');
 let SummaryPrice = document.querySelector('.heading__summary');
 let summaryInfo = document.querySelector('.summary__info');
+let orderBtn = document.querySelector('.order-btn');
 
 const currency = 'сом';
 
@@ -43,7 +44,7 @@ const products = [
 		price: 475,
 		discount: 0,
 		quantity: 2,
-		lasts: 2,
+		lasts: 3,
 	},
 ];
 
@@ -64,17 +65,21 @@ function reloadCard() {
 	createCard();
 }
 
-function changeQuantity(key, newQuantity) {
+function changeQuantity(key, id, lasts, newQuantity) {
 	if (newQuantity === 0) {
 		delete products[key];
+	} else if (newQuantity > lasts) {
+		document.querySelector('.btn__right').disable = true;
+
+		document.querySelector(`.btn__${id}`).classList.add('btn-disabled');
 	} else {
 		products[key].quantity = newQuantity;
+		reloadCard();
 	}
-	reloadCard();
 }
 
 function selects() {
-	const checkboxes = document.getElementsByName('chk');
+	const checkboxes = document.querySelectorAll('.basket-card__checkbox');
 
 	checkboxes.forEach((checkbox) => {
 		checkbox.checked = !checkbox.checked;
@@ -98,7 +103,9 @@ function createCard() {
 		newLi.className = 'basket-card';
 		newLi.innerHTML = `
 		<div class="container">
-      <input type="checkbox" id="product" name="chk" class="basket-card__checkbox">
+      <input type="checkbox" id=${value.id} name="${
+			value.id
+		}" class="basket-card__checkbox" value="${value.quantity}">
       <img src="img/${value.img}" class="basket-card__img" />
       <div class="basket-card__product">
 	  <div class="basket-card__price_isMobile">
@@ -114,26 +121,42 @@ function createCard() {
       <div class="basket-card__name">${value.name}</div>
       <div class="basket-card__options">${value.options}</div>
       <div class="basket-card__owner">${value.owner}</div>
-      <div class="basket-card__creator">${value.creator}</div>
+      <div class="basket-card__creator">
+	  <div class="creator__name">${value.creator}</div>
+	  <div class="tooltip"> 
+	  <img class="creator__info"src="img/info.svg" alt="info-icon"/>
+	  <div class="tooltip-text">
+	  <h4 class="tooltip-text__heading">${value.creator}</h4>
+	  <p class="tooltip-text__info">ОГРН: 5167746237148<p>
+	  <p class="tooltip-text__address">129337, Москва, улица Красная Сосна, 2, корпус 1, стр. 1, помещение 2, офис 34 </p>
+	  </div>
+	  </div>	
+	  <div>
+	  </div>
       </div>
+	  </div>
 	  </div>
 	  <div  class="container">
       <div class="basket-card__center">
       <div class="basket-card__quantity">
-        <button class="basket-card__btn btn__left" onclick="changeQuantity(${key}, ${
+        <button type="button" class="basket-card__btn btn__left 
+				}" onclick="changeQuantity(${key},${value.id}, ${value.lasts}, ${
 			value.quantity - 1
 		})">-</button>
         <div class="basket-card__count">${value.quantity}</div> 
-        <button class="basket-card__btn  btn__right" onclick="changeQuantity(${key}, ${
-			value.quantity + 1
-		})">+</button>
+        <button  type="button"  id="${
+					value.id
+				}" class="basket-card__btn  btn__right btn__${
+			value.id
+		}" onclick="changeQuantity(${key}, ${value.id},
+			${value.lasts}, ${value.quantity + 1})">+</button>
       </div>
 	  <div class="basket-card__product-delete">
         Осталось ${value.lasts} шт.
 	  </div>
       <div class="basket-card__icons">
-      <span><img src="img/heart.svg" /></span> 
-      <span><img src="img/delete.svg" /></span>
+      <span><img src="img/heart.svg" class="icons__heart"/></span> 
+      <span><img src="img/delete.svg" class="icons__delete"/></span>
       </div>
       </div>
       <div class="basket-card__price">
@@ -141,7 +164,19 @@ function createCard() {
 				value.price * ((100 - value.discount) / 100) * value.quantity
 			} <span class="basket-card__price-currency">${currency}</span> 
 		</div>
-		<div class="basket-card__price-fake"> <s>${value.price * value.quantity} сом</s>
+		<div class="basket-card__price-fake"> 
+		<div class="tooltip"> 
+		<s>${value.price * value.quantity} сом</s>
+		<div class="tooltip-text">
+		<div class="tooltip-discount"> 
+		<div class="tooltip-discount__percent"> Скидка ${value.discount}% </div>
+		<div class="tooltip-discount__price"> -${
+			value.price * (value.discount / 100)
+		} сом </div>
+		</div>
+		</div>
+		</div>	
+		
 	</div>		
       </div>  
       `;
@@ -181,8 +216,8 @@ function createLacklist() {
 	</div>
 	<div class="container">	
     <div class="lack-list__icons">
-    <span><img src="img/heart.svg" /></span> 
-    <span><img src="img/delete.svg" /></span>
+    <span><img src="img/heart.svg" class="icons__heart"/></span> 
+    <span><img src="img/delete.svg" class="icons__delete"/></span>
     </div>
 	</div>
     `;
@@ -216,6 +251,15 @@ function createInfoSummary() {
 	<div class="info-transfer"><div class="info-transfer__heading">Доставка</div>
 	<div class="info-tranfer__price">${delivery[0].price}</div>
 	</div>`;
+}
+
+function paymentNow() {
+	const checkbox = document.querySelector('#pay-moment');
+	if (checkbox.checked) {
+		document.querySelector('.order-btn').innerHTML = `Оплатить ${price} сом`;
+	} else {
+		document.querySelector('.order-btn').innerHTML = `Оплатить`;
+	}
 }
 
 createCard();

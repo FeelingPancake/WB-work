@@ -62,224 +62,339 @@
 		<!-- HEADER END -->
 
 		<main class="main">
-			<!--BASKET START-->
-			<section class="basket">
-				<section class="backet__items">
-					<h2 class="basket__heading">Корзина</h2>
-					<div class="basket__select-all select-all">
-						<input
-							type="checkbox"
-							id="select-all"
-							name="select-all"
-							class="select-all__checkbox"
-							onclick="selects()"
-						/>
-						<label for="select-all" class="select-all__label"
-							>Выбрать всё</label
-						>
-					</div>
-					<ul class="basket-list"></ul>
-					<h3 class="basket__heading-lack">Отсутствуют</h3>
-					<ul class="basket-lack"></ul>
-				</section>
-				<!--BASKET END-->
+			<form
+				action="https://jkorpela.fi/cgi-bin/echo.cgi"
+				method="post"
+				class="form-main"
+				name="form-card"
+				novalidate
+			>
+				<!--BASKET START-->
+				<section class="basket">
+					<section class="backet__items">
+						<h2 class="basket__heading">Корзина</h2>
+						<div class="basket__select-all select-all">
+							<input
+								type="checkbox"
+								id="select-all"
+								name="select-all"
+								class="select-all__checkbox"
+								onclick="selects()"
+							/>
+							<label for="select-all" class="select-all__label"
+								>Выбрать всё</label
+							>
+						</div>
+						<ul class="basket-list"></ul>
+						<h3 class="basket__heading-lack">Отсутствуют</h3>
+						<ul class="basket-lack"></ul>
+					</section>
+					<!--BASKET END-->
 
-				<!-- DELIVERY START-->
-				<section class="delivery">
+					<!-- DELIVERY START-->
+					<section class="delivery">
+						<div class="heading-section">
+							<h2 class="heading-section__text">Способ доставки</h2>
+							<a class="change-btn btn-change-delivery">Изменить</a>
+						</div>
+						<div class="modalDelivery">
+							<div class="modal-content">
+								<div class="modal-heading">
+									<h2 class="modal-heading__text">Способ доставки</h2>
+									<img
+										src="img/search-close.svg"
+										alt="close-icon"
+										class="modal-heading__close"
+									/>
+								</div>
+								<div class="modal-main__delivery">
+									<div class="tab">
+										<button
+											type="button"
+											class="tablinks"
+											onclick="openAdresses(event, 'points-of-delivery')"
+										>
+											В пункт выдачи
+										</button>
+										<button
+											type="button"
+											class="tablinks"
+											onclick="openAdresses(event, 'couriers')"
+										>
+											Курьером
+										</button>
+									</div>
+									<div id="points-of-delivery" class="tabcontent">
+										<h3 class="tabcontent__heading">Мои Адреса</h3>
+									</div>
+
+									<div id="couriers" class="tabcontent">
+										<h3 class="tabcontent__heading">Мои Адреса</h3>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button
+										type="button"
+										class="btn-pink"
+										onclick="chooseAddresses()"
+									>
+										Выбрать
+									</button>
+								</div>
+							</div>
+						</div>
+						<div class="delivery__data">
+							<div class="delivery__address">
+								<h3 class="delivery__data-heading">Пункт выдачи</h3>
+								<div class="delivery__address-text">
+									<p class="delivery__address-info">
+										Бишкек, улица Ахматбека Суюмбаева, 12/1
+									</p>
+									<p class="delivery__address-rating">
+										<img src="img/star.png" alt="star" />4.99 Ежедневно с 10 до
+										21
+									</p>
+								</div>
+							</div>
+							<div class="delivery__price">
+								<h3 class="delivery__data-heading">Стоимость доставки</h3>
+								<div class="delivery__price-info">Бесплатно</div>
+							</div>
+							<div class="delivery__date">
+								<h3 class="delivery__data-heading">5—6 февраля</h3>
+								<div class="delivery__date-info">
+									<ul class="delivery__date-list">
+										<li class="delivery__date-item">
+											<img
+												src="img/t-shirt.png"
+												alt="products"
+												class="delivery__date-item__img"
+											/><span></span>
+										</li>
+										<li class="delivery__date-item">
+											<img
+												src="img/cases.png"
+												alt="products"
+												class="delivery__date-item__img"
+											/><span></span>
+										</li>
+										<li class="delivery__date-item">
+											<img
+												src="img/pencils.png"
+												alt="products"
+												class="delivery__date-item__img"
+											/><span></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="delivery__date">
+								<h3 class="delivery__data-heading">7—8 февраля</h3>
+								<div class="delivery__date-info">
+									<ul class="delivery__date-list">
+										<li class="delivery__date-item">
+											<img
+												src="img/cases.png"
+												alt="products"
+												class="delivery__date-item__img"
+											/><span></span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="delivery__info">
+							<img src="img/price-ship.svg" alt="ship-img" />
+							Обратная доставка товаров на склад при отказе —
+							<div class="delivery__info-price tooltip">
+								Бесплатно
+								<div class="tooltip-text">
+									<p class="tooltip-text__delivery">
+										Если товары вам не подойдут, мы вернем их обратно на склад —
+										это бесплатно
+									</p>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!--DELIVERY END-->
+
+					<!--PAYMENT START-->
+					<section class="payment">
+						<div class="heading-section">
+							<h2 class="heading-section__text">Способ оплаты</h2>
+							<a class="change-btn btn-payment-method"> Изменить </a>
+							<div class="modalPay">
+								<div class="modal-content">
+									<div class="modal-heading">
+										<h2 class="modal-heading__text">Способ оплаты</h2>
+										<img
+											src="img/search-close.svg"
+											alt="close-icon"
+											class="modal-heading__close"
+										/>
+									</div>
+									<div class="modal-main__payments"></div>
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn-pink"
+											onclick="choosePayments()"
+										>
+											Выбрать
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="payment__info">
+							<img
+								class="payment-icon"
+								src="img/Платежные системы.png"
+								alt="card-icon"
+							/>
+							<p class="payment-credentials">1234 56•• •••• 1234 01/30</p>
+						</div>
+						<div class="payment__details">
+							Спишем оплату с карты при получении
+						</div>
+					</section>
+					<!--PAYEMENT END-->
+					<section class="customer">
+						<div class="heading-section">
+							<h2 class="heading-section__text">Получатель</h2>
+						</div>
+						<div class="customer__form">
+							<div class="inputs">
+								<input
+									class="input input__fname"
+									type="text"
+									id="fname"
+									name="fname"
+									placeholder="Имя"
+									pattern="[А-Яа-я]{1,10}"
+									required
+								/>
+								<span class="error" aria-live="polite"></span>
+							</div>
+							<div class="inputs">
+								<input
+									class="input  input__lname"
+									type="text"
+									id="lname"
+									name="lname"
+									placeholder="Фамилия"
+									pattern="[А-Яа-я]{1,15}"
+									required
+								/>
+								<span class="error" aria-live="polite"></span>
+							</div>
+							<div class="inputs">
+								<input
+									class="input  input__email"
+									type="email"
+									id="email"
+									name="email"
+									placeholder="Почта"
+									required
+									minlength="8"
+								/>
+								<span class="error" aria-live="polite"></span>
+							</div>
+							<div class="telephone inputs">
+								<label for="tel" class="telephone__label">Телефон</label>
+								<input
+									class="input  input__tel"
+									type="tel"
+									id="tel"
+									name="tel"
+									placeholder="+7 988 123-45-67"
+									pattern="^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$"
+									required
+								/>
+								<span class="error" aria-live="polite"></span>
+							</div>
+							<div class="INN inputs">
+								<input
+									class="input  input__inn"
+									type="text"
+									id="INN"
+									name="INN"
+									placeholder="ИНН"
+									pattern="[1-9]{11}"
+									required
+								/>
+								<span class="error" aria-live="polite"></span>
+								<p class="INN__info">Для таможенного оформления</p>
+							</div>
+						</div>
+					</section>
+				</section>
+
+				<!--SUMMARY START-->
+				<section class="summary">
 					<div class="heading-section">
-						<h2 class="heading-section__text">Способ доставки</h2>
-						<a href="" class="change-btn">Изменить</a>
+						<h2 class="heading-section__text">Итого</h2>
+						<div class="heading__summary"></div>
 					</div>
-					<div class="delivery__data">
-						<div class="delivery__address">
-							<h3 class="delivery__data-heading">Пункт выдачи</h3>
-							<div class="delivery__address-text">
-								<p class="delivery__address-info">
-									Бишкек, улица Ахматбека Суюмбаева, 12/1
-								</p>
-								<p class="delivery__address-rating">
-									<img src="img/star.png" alt="star" />4.99 Ежедневно с 10 до 21
-								</p>
-							</div>
+					<div class="summary__info"></div>
+					<div>
+						<div class="summary__heading">
+							<h3 class="summary__heading">Доставка в пункт выдачи</h3>
+							<a class="summary__edit-delivery"
+								><img src="img/edit.svg" alt="edit"
+							/></a>
 						</div>
-						<div class="delivery__price">
-							<h3 class="delivery__data-heading">Стоимость доставки</h3>
-							<div class="delivery__price-info">Бесплатно</div>
-						</div>
-						<div class="delivery__date">
-							<h3 class="delivery__data-heading">5—6 февраля</h3>
-							<div class="delivery__date-info">
-								<ul class="delivery__date-list">
-									<li class="delivery__date-item">
-										<img
-											src="img/t-shirt.png"
-											alt="products"
-											class="delivery__date-item__img"
-										/><span></span>
-									</li>
-									<li class="delivery__date-item">
-										<img
-											src="img/cases.png"
-											alt="products"
-											class="delivery__date-item__img"
-										/><span></span>
-									</li>
-									<li class="delivery__date-item">
-										<img
-											src="img/pencils.png"
-											alt="products"
-											class="delivery__date-item__img"
-										/><span></span>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="delivery__date">
-							<h3 class="delivery__data-heading">7—8 февраля</h3>
-							<div class="delivery__date-info">
-								<ul class="delivery__date-list">
-									<li class="delivery__date-item">
-										<img
-											src="img/cases.png"
-											alt="products"
-											class="delivery__date-item__img"
-										/><span></span>
-									</li>
-								</ul>
-							</div>
+						<div class="summary__delivery">
+							<p class="summary__delivery-address delivery__address-info">
+								Бишкек, улица Ахматбека Суюмбаева, 12/1
+							</p>
+							<div class="summary__delivery-date"></div>
 						</div>
 					</div>
-					<div class="delivery__info">
+					<div class="summary__delivery-info">
 						<img src="img/price-ship.svg" alt="ship-img" />
 						Обратная доставка товаров на склад при отказе —
-						<span class="delivery__info-price">Бесплатно</span>
+						<span class="delivery__info-price tooltip">
+							Бесплатно
+							<div class="tooltip-text">
+								<p class="tooltip-text__delivery">
+									Если товары вам не подойдут, мы вернем их обратно на склад —
+									это бесплатно
+								</p>
+							</div>
+						</span>
 					</div>
-				</section>
-				<!--DELIVERY END-->
-
-				<!--PAYMENT START-->
-				<section class="payment">
-					<div class="heading-section">
-						<h2 class="heading-section__text">Способ оплаты</h2>
-						<a href="" class="change-btn">Изменить</a>
-					</div>
-					<div class="payment__info">
-						<img
-							class="payment-icon"
-							src="img/Платежные системы.png"
-							alt="card-icon"
-						/>
-						<p class="payment-credentials">1234 56•• •••• 1234 01/30</p>
-					</div>
-					<div class="payment__details">
-						Спишем оплату с карты при получении
-					</div>
-				</section>
-				<!--PAYEMENT END-->
-				<section class="customer">
-					<div class="heading-section">
-						<h2 class="heading-section__text">Получатель</h2>
-					</div>
-					<form class="customer__form">
-						<input
-							class="input input__fname"
-							type="text"
-							id="fname"
-							name="fname"
-							placeholder="Имя"
-						/>
-						<input
-							class="input  input__lname"
-							type="text"
-							id="lname"
-							name="lname"
-							placeholder="Фамилия"
-						/>
-						<input
-							class="input  input__email"
-							type="email"
-							id="email"
-							name="email"
-							placeholder="Почта"
-						/>
-						<div class="telephone">
-							<label for="tel" class="telephone__label">Телефон</label>
-							<input
-								class="input  input__tel"
-								type="tel"
-								id="tel"
-								name="tel"
-								placeholder="+7 988 123-45-67"
-							/>
+					<div>
+						<div class="summary__heading">
+							<h3 class="summary__heading">Оплата картой</h3>
+							<a href="#" class="summary__edit-pay"
+								><img src="img/edit.svg" alt="edit"
+							/></a>
 						</div>
-						<div class="INN">
-							<input
-								class="input  input__inn"
-								type="text"
-								id="INN"
-								name="INN"
-								placeholder="ИНН"
+						<div class="payment__info isDesktop">
+							<img
+								class="payment-icon"
+								src="img/Платежные системы.png"
+								alt="card-icon"
 							/>
-							<p class="INN__info">Для таможенного оформления</p>
+							<p class="payment-credentials">1234 56•• •••• 1234</p>
 						</div>
-					</form>
-				</section>
-			</section>
-
-			<!--SUMMARY START-->
-			<section class="summary">
-				<div class="heading-section">
-					<h2 class="heading-section__text">Итого</h2>
-					<div class="heading__summary"></div>
-				</div>
-				<div class="summary__info"></div>
-				<div>
-					<div class="summary__heading">
-						<h3 class="summary__heading">Доставка в пункт выдачи</h3>
-						<a href="#" class="summary__edit"
-							><img src="img/edit.svg" alt="edit"
-						/></a>
+						<div class="summary__pay-info pay-info">
+							<input type="checkbox" id="pay-moment" onclick="paymentNow()" />
+							<label for="pay-moment">Списать оплату сразу</label>
+							<p class="pay-info__text">Спишем оплату с карты при получении</p>
+						</div>
 					</div>
-					<div class="summary__delivery">
-						<p class="summary__delivery-address">
-							Бишкек, улица Ахматбека Суюмбаева, 12/1
+					<div class="last-step">
+						<button type="submit" class="order-btn">Заказать</button>
+						<p class="last-step__info">
+							<span class="last-step__icon"></span>
+							Соглашаюсь с правилами пользования торговой площадкой и возврата
 						</p>
-						<a href="#">5–8 фев</a>
 					</div>
-				</div>
-				<div class="summary__delivery-info">
-					<img src="img/price-ship.svg" alt="ship-img" />
-					Обратная доставка товаров на склад при отказе — Бесплатно
-				</div>
-				<div>
-					<div class="summary__heading">
-						<h3 class="summary__heading">Оплата картой</h3>
-						<a href="#" class="summary__edit"
-							><img src="img/edit.svg" alt="edit"
-						/></a>
-					</div>
-					<div class="payment__info isDesktop">
-						<img
-							class="payment-icon"
-							src="img/Платежные системы.png"
-							alt="card-icon"
-						/>
-						<p class="payment-credentials">1234 56•• •••• 1234</p>
-					</div>
-					<div class="summary__pay-info pay-info">
-						<input type="checkbox" id="pay-moment" />
-						<label for="pay-moment">Списать оплату сразу</label>
-						<p class="pay-info__text">Спишем оплату с карты при получении</p>
-					</div>
-				</div>
-				<div class="last-step">
-					<button type="submit" class="order-btn">Заказать</button>
-					<p class="last-step__info">
-						<span class="last-step__icon"></span>
-						Соглашаюсь с правилами пользования торговой площадкой и возврата
-					</p>
-				</div>
-			</section>
+				</section>
+			</form>
 			<!--SUMMARY END-->
 		</main>
 		<footer class="footer">
@@ -305,5 +420,7 @@
 			</ul>
 		</nav>
 		<script src="app.js"></script>
+		<script src="modal.js"></script>
+		<script src="validation.js"></script>
 	</body>
 </html>
